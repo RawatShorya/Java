@@ -67,6 +67,6 @@ public class Nqueen {
                 return false;
             }
         }
-        return true;
+        return Boolean.TRUE;
     }
 }

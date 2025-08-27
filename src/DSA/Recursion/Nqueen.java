@@ -9,64 +9,64 @@ public class Nqueen {
         System.out.println(result);
     }
 
-    public static List<List<String>> solveNQueens(int n) {
-        List<String> board = new ArrayList<>();
+    private static List<List<String>> solveNQueens(int n) {
         List<List<String>> ans = new ArrayList<>();
-        String emptyRow = ".".repeat(n);
+        List<String> board = new ArrayList<>();
+        String emptyBoard = ".".repeat(n);
         for (int i = 0; i < n; i++) {
-            board.add(emptyRow);
+            board.add(emptyBoard);
         }
-        nQueens(board, ans, n, 0);
+        nQueen(board, ans, n, 0);
         return ans;
     }
 
-    public static void nQueens(List<String> board, List<List<String>> ans, int n, int row) {
-        if (row == n) {
+    private static void nQueen(List<String> board, List<List<String>> ans, int n, int row) {
+
+        if (n == row){
             ans.add(new ArrayList<>(board));
             return;
         }
+
         for (int j = 0; j < n; j++) {
-            if (isSafe(board, j, n, row)) {
-                StringBuilder sb = new StringBuilder(board.get(row));
-                sb.setCharAt(j, 'Q');
-                board.set(row, sb.toString());
-                nQueens(board, ans, n, row + 1);
-                sb.setCharAt(j, '.');
-                board.set(row, sb.toString());
+            if(isSafe(board, row, j, n)){
+                StringBuilder stringBuilder = new StringBuilder(board.get(row));
+                stringBuilder.setCharAt(j, 'Q');
+                board.set(row, stringBuilder.toString());
+                nQueen(board, ans, n, row+1);
+                stringBuilder.setCharAt(j, '.');
+                board.set(row, stringBuilder.toString());
             }
         }
+
     }
 
-    private static boolean isSafe(List<String> board, int col, int n, int row) {
-        //      Horizontally
-        String rowString = board.get(row);
-        if (rowString.contains("Q")) {
+    public static boolean isSafe(List<String> board, int row, int col, int n){
+        //Check Horizontally
+        if (board.get(row).contains("Q")){
             return false;
         }
 
-        // Vertically
-        for (int j = 0; j < n; j++) {
-            String columnString = board.get(j);
-            if (columnString.charAt(col) == 'Q') {
+        //Check Vertically
+        for (int i = 0; i<n; i++){
+            if (board.get(i).charAt(col) == 'Q'){
                 return false;
             }
         }
 
-        //      Left Diagonal
-        for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
-            String boardRow = board.get(i);
-            if (boardRow.charAt(j) == 'Q') {
+        //Check Diagonally on left side
+        for (int i=row, j=col; i>=0 && j>=0; i--, j--){
+            if (board.get(i).charAt(j) == 'Q'){
                 return false;
             }
         }
 
-        //      Right Diagonal
-        for (int i = row, j = col; i >= 0 && j < n; i--, j++) {
-            String boardRow = board.get(i);
-            if (boardRow.charAt(j) == 'Q') {
+        //Check Diagonally on right side
+        for (int i=row, j=col; i>=0 && j<n; i--, j++){
+            if (board.get(i).charAt(j) == 'Q'){
                 return false;
             }
         }
-        return Boolean.TRUE;
+
+        return true;
     }
 }

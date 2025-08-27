@@ -1,4 +1,4 @@
-package Collections.ArrayList;
+package Collections.List.ArrayList;
 
 public class MyArrayList<E> {
     private Object[] elementData;

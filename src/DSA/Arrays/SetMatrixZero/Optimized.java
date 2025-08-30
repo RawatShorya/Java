@@ -9,14 +9,6 @@ public class Optimized {
     private static void setMatrixZero(int[][] matrix) {
         int col0 = matrix[0][0];
 
-//        [[1]]
-//        List<Integer> list = ;
-//        List<Integer> list1 = ;
-//        List<List<Integer>> listNew = ;
-
-        //top array - col0 and matrix[0][j]
-        //left array - matrix[i][0]
-
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 if (matrix[i][j] == 0) {

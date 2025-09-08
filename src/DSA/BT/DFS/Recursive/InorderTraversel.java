@@ -1,4 +1,4 @@
-package DSA.BT.DFS;
+package DSA.BT.DFS.Recursive;
 
 import DSA.BT.TreeNode;
 

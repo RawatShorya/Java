@@ -1,11 +1,11 @@
-package DSA.BT.DFS;
+package DSA.BT.DFS.Recursive;
 
 import DSA.BT.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostOrder {
+public class PreOrderTraversal {
     public static void main(String[] args) {
         TreeNode<Integer> root = new TreeNode<>(1);
         root.left = new TreeNode<>(2);
@@ -19,16 +19,16 @@ public class PostOrder {
 
     private static List<Integer> DFS(TreeNode<Integer> root) {
         List<Integer> result = new ArrayList<>();
-        postOrder(root, result);
+        preOrder(root, result);
         return result;
     }
 
-    private static void postOrder(TreeNode<Integer> root, List<Integer> result) {
+    private static void preOrder(TreeNode<Integer> root, List<Integer> result) {
         if (root == null) {
             return;
         }
-        postOrder(root.left, result);
-        postOrder(root.right, result);
         result.add(root.data);
+        preOrder(root.left, result);
+        preOrder(root.right, result);
     }
 }

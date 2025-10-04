@@ -6,7 +6,7 @@ import java.util.Map;
 public class ConstructBinaryTreeInorderPostorderTraversal {
   public static void main(String[] args) {
     TreeNode<Integer> root = buildTree(new int[] {3, 9, 20, 15, 7}, new int[] {9, 3, 15, 20, 7});
-    TreePrinter.printPretty(root);
+    TreePrinter.printPrettyTree(root);
   }
 
   private static TreeNode<Integer> buildTree(int[] inorder, int[] postorder) {

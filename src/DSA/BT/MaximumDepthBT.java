@@ -11,7 +11,7 @@ public class MaximumDepthBT {
     root.left.left = new TreeNode<>(4);
     root.left.right = new TreeNode<>(5);
     root.right.right = new TreeNode<>(6);
-    TreePrinter.printPretty(root);
+    TreePrinter.printPrettyTree(root);
     System.out.println(maxDepth(root));
   }
 

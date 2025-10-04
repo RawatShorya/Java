@@ -4,7 +4,7 @@ import java.util.*;
 
 public class TreePrinter {
 
-  public static <T> void printPretty(TreeNode<T> root) {
+  public static <T> void printPrettyTree(TreeNode<T> root) {
     List<List<String>> lines = new ArrayList<>();
 
     List<TreeNode<T>> level = new ArrayList<>();

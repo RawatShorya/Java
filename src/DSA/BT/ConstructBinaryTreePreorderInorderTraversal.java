@@ -1,14 +1,12 @@
 package DSA.BT;
 
-import com.sun.source.tree.Tree;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class ConstructBinaryTreePreorderInorderTraversal {
   public static void main(String[] args) {
     TreeNode<Integer> root = buildTree(new int[] {3, 9, 20, 15, 7}, new int[] {9, 3, 15, 20, 7});
-    TreePrinter.printPretty(root);
+    TreePrinter.printPrettyTree(root);
   }
 
   public static TreeNode<Integer> buildTree(int[] preorder, int[] inorder) {

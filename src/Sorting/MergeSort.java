@@ -7,49 +7,45 @@ public class MergeSort {
     for (int i = 0; i < arr.length; i++) {
       System.out.print(arr[i] + " ");
     }
+    System.out.println();
   }
 
-  public static int[] sort(int[] arr, int start, int end) {
-    if (start < end) {
-      int mid = start + ((end - start) / 2);
-      sort(arr, start, mid);
+  private static void sort(int[] arr, int st, int end) {
+    if (st < end) {
+      int mid = (end + st) / 2;
+      sort(arr, st, mid);
       sort(arr, mid + 1, end);
-      merge(arr, start, mid, end);
+      merge(arr, st, mid, end);
     }
-    return arr;
   }
 
-  private static void merge(int[] arr, int start, int mid, int end) {
-    int[] temp = new int[end - start + 1];
+  private static void merge(int[] arr, int st, int mid, int end) {
+    int t1 = st;
+    int t2 = mid + 1;
+    int[] temp = new int[end - st + 1];
     int k = 0;
-    int i = start;
-    int j = mid + 1;
-    while (i <= mid && j <= end) {
-      if (arr[i] < arr[j]) {
-        temp[k] = arr[i];
-        i++;
-        k++;
+    while (t1 <= mid && t2 <= end) {
+      if (arr[t1] <= arr[t2]) {
+        temp[k] = arr[t1];
+        t1++;
       } else {
-        temp[k] = arr[j];
-        j++;
-        k++;
+        temp[k] = arr[t2];
+        t2++;
       }
-    }
-
-    while (i <= mid) {
-      temp[k] = arr[i];
-      i++;
       k++;
     }
-
-    while (j <= end) {
-      temp[k] = arr[j];
-      j++;
+    while (t1 <= mid) {
+      temp[k] = arr[t1];
+      t1++;
       k++;
     }
-
-    for (int idx = 0; idx < temp.length; idx++) {
-      arr[start + idx] = temp[idx];
+    while (t2 <= end) {
+      temp[k] = arr[t2];
+      t2++;
+      k++;
+    }
+    for (int i = 0; i < temp.length; i++) {
+      arr[st + i] = temp[i];
     }
   }
 }

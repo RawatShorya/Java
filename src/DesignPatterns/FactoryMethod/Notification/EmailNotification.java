@@ -1,4 +1,4 @@
-package DesignPatterns.FactoryMethod;
+package DesignPatterns.FactoryMethod.Notification;
 
 public class EmailNotification implements Notification {
   @Override

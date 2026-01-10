@@ -1,4 +1,6 @@
-package DesignPatterns.FactoryMethod;
+package DesignPatterns.FactoryMethod.NotificationCreator;
+
+import DesignPatterns.FactoryMethod.Notification.Notification;
 
 public abstract class NotificationCreator {
     public abstract Notification createNotification();

@@ -1,4 +1,4 @@
-package DesignPatterns.FactoryMethod;
+package DesignPatterns.FactoryMethod.Notification;
 
 public class SMSNotification implements Notification {
 

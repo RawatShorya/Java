@@ -6,37 +6,35 @@ import java.util.HashSet;
 import java.util.List;
 
 public class CombinationSum2 {
-  public static void main(String[] args) {
-    List<List<Integer>> list = cb2(new int[] {10,1,2,7,6,1,5}, 8);
-    list.forEach(
-        x -> {
-          System.out.print(x + " ");
-        });
-  }
-
-  private static List<List<Integer>> cb2(int[] ints, int target) {
-    HashSet<List<Integer>> hashSet = new HashSet<>();
-    List<Integer> current = new ArrayList<>();
-    Arrays.sort(ints);
-    int idx = 0;
-    findCb2(hashSet, ints, current, idx, target);
-    return new ArrayList<>(hashSet);
-  }
-
-  private static void findCb2(
-          HashSet<List<Integer>> hashSet, int[] nums, List<Integer> current, int idx, int target) {
-    if (nums.length == idx) {
-      if (target == 0) {
-        hashSet.add(new ArrayList<>(current));
-      }
-      return;
+    public static void main(String[] args) {
+        List<List<Integer>> list = combinationSum2(new int[]{10, 1, 2, 7, 6, 1, 5}, 8);
+        list.forEach(
+                x -> {
+                    System.out.print(x + " ");
+                });
     }
 
-    if (target >= nums[idx]) {
-      current.add(nums[idx]);
-      findCb2(hashSet, nums, current, idx + 1, target - nums[idx]);
-      current.remove(current.size() -  1);
+    public static List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(candidates);
+        findSum(result, candidates, target, new ArrayList<>(), 0);
+        return result;
     }
-    findCb2(hashSet, nums, current, idx + 1, target);
-  }
+
+    private static void findSum(List<List<Integer>> result, int[] candidates, int target, ArrayList<Integer> current, int idx) {
+
+        if (target == 0) {
+            result.add(new ArrayList<>(current));
+            return;
+        }
+
+        for (int i = idx; i < candidates.length; i++) {
+            if (i > idx && candidates[i] == candidates[i - 1]) continue;
+            if (target < candidates[i])
+                break;
+            current.add(candidates[i]);
+            findSum(result, candidates, target - candidates[i], current, i + 1);
+            current.remove(current.size() - 1);
+        }
+    }
 }

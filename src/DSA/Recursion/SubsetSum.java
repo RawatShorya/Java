@@ -6,15 +6,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class SubsetSum {
-    public static void main(String[] args){
-        List<Integer> list = subsetSums(new int[] {1,2,5});
+    public static void main(String[] args) {
+        List<Integer> list = subsetSums(new int[]{1, 2, 5});
         Collections.sort(list);
-        for (Integer i : list) {
-      System.out.print(i + " ");
-        }
+        System.out.println(list);
     }
 
-    public static List<Integer> subsetSums(int[] nums){
+    public static List<Integer> subsetSums(int[] nums) {
         List<Integer> result = new ArrayList<>();
         int n = nums.length;
         int sum = 0;
@@ -22,12 +20,14 @@ public class SubsetSum {
         return result;
     }
 
-    public static void sum(int[] nums,List<Integer> result, int idx, int sum, int n){
-        if(idx == n){
+    private static void sum(int[] nums, List<Integer> result, Integer i, int sum, int n) {
+
+        if (nums.length == i) {
             result.add(sum);
             return;
         }
-        sum(nums, result, idx+1, sum, n); //not adding
-        sum(nums, result, idx+1, sum + nums[idx], n); //adding
+
+        sum(nums, result, i + 1, sum, n);
+        sum(nums, result, i + 1, sum + nums[i], n);
     }
 }

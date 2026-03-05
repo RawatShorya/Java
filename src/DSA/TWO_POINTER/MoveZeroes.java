@@ -1,0 +1,23 @@
+package DSA.TWO_POINTER;
+
+public class MoveZeroes {
+    public static void main(String[] args) {
+        int[] arr = new int[]{0, 1, 0, 3, 12};
+        moveZeroes(arr);
+        for (int i =0; i<arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public static void moveZeroes(int[] nums) {
+        int slow = 0;
+       for(int fast = 0; fast<nums.length; fast++){
+           if(nums[fast] != 0){
+               int temp = nums[slow];
+               nums[slow] = nums[fast];
+               nums[fast] = temp;
+               slow++;
+           }
+       }
+    }
+}
